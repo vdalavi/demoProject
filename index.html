@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>time Data</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.1/socket.io.js"></script>
+  <script>
+    const socket = io();
+    console.log("in script");
+    socket.on('connect', () => {
+      console.log('Connected to server');
+    });
+
+    socket.on('disconnect', (reason) => {
+      if (reason === 'io server disconnect') {
+        console.log('Disconnected from server');
+      } else {
+        console.error('Connection error:', reason);
+      }
+    });
+
+    socket.on('data', (data) => {
+      console.log('Received data:', data);
+    });
+  </script>
+</head>
+<body>
+  <h1>time Data</h1>
+</body>
+</html>
